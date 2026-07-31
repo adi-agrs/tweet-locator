@@ -178,3 +178,20 @@ a:hover {
     }
 }
 
+.tweet-card {
+    border: 1px solid #1DA1F2;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+}
+
+.tweet-user {
+    color: #1DA1F2;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.tweet-text {
+    color: #fafafa;
+    margin-bottom: 8px;
+}
