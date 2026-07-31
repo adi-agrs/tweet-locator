@@ -6,3 +6,5 @@ chrome.action.onClicked.addListener(function() {
         url: chrome.runtime.getURL("history.html")
     });
 });
+
+// DONE

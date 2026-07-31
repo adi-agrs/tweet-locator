@@ -3,7 +3,14 @@
     "name": "Tweet Locator",
     "version": "1.0",
     "description": "Tracks tweets you have seen and lets you find them with AI using natural language prompts.",
+
     "permissions": ["storage", "activeTab", "tabs"],
+
+    "host_permissions": [
+    "https://x.com/*",
+    "https://twitter.com/*"
+    ],
+
     "content_scripts": [{
         "matches": [
             "*://*.twitter.com/*",

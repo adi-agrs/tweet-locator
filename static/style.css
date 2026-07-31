@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Gill Sans', monospace;
+    color: #1DA1F2;
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 0 24px;
+    max-width: 2200px;
+    background-color: #000613;
+    background-size: 24px 24px;
+    background-image:
+    linear-gradient(to right, rgb(30, 33, 37) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(30, 33, 37) 1px, transparent 1px);
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+h1 {
+    text-align: center;
+    font-size: 4.8rem;
+    font-weight: bold;
+    margin-top: 100px;
+    margin-bottom: 8px;
+}
+
+h2 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #fafafa;
+    text-align: center;
+    margin-top: 24px;
+    margin-bottom: 48px;
+}
+
+h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #fafafa;
+    margin-bottom: 16px;
+}
+
+input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 2.6rem;
+    font-family: inherit;
+    font-weight: bold;
+    width: 200px;
+    color: #fafafa;
+    margin-left: 0px;
+    margin-top: 1px;
+    text-align: center;
+}
+
+input::placeholder {
+    color: #fafafa;
+    margin-left: 0px;
+    margin-top: 3px;
+    font-size: 2.6rem;
+    text-align: center;
+}
+
+form {
+    align-items: right;
+    justify-content: right;
+    color: #fafafa;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+}
+
+.form-row {
+    display: flex;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #fafafa;
+    text-align: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+button {
+    font-size: 1.5rem;
+    padding: 3px 40px;
+    margin-bottom: 24px;
+    font-weight: bold;
+    font-family: 'OCR A Std', monospace;
+    background-color: #000000;
+    color: #fafafa;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.2s ease;
+}
+
+button:hover {
+    background-color: #e00061;
+    color: #fafafa;
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: #000000;
+}
+
+a:hover {
+    cursor: pointer;
+    color: #e00b00;
+}
+
+.cursor {
+  pointer-events: none;
+  position: fixed;
+  display: block;
+  border-radius: 0;
+  mix-blend-mode: difference;
+  top: 0;
+  left: 0;
+  z-index: 9999999999999999;  
+}
+
+.circle {
+    position: absolute;
+    display: block;
+    width: 90px;
+    height: 90px;
+    border-radius: 65px;
+    background-color: #fafafa;
+}
+
+::selection {
+    background-color: #07be6c; /* the highlight color */
+    color: #fafafa; /* the text color when highlighted */
+}
+
+.tweet-list {
+   text-align: center;
+}
+
+.trail{
+    position: fixed;
+    background-color: #1DA1F2;
+    width: 20px;
+    height: 20px;
+    border-radius: 0%;
+    pointer-events: none;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+    animation: fadeOut 0.3s ease-out forwards;
+    z-index: 1;
+}
+
+@keyframes fadeOut {
+    from {
+        width: 20px;
+        height: 20px;
+    }
+
+    to{
+        width: 10px;
+        height: 10px;
+        transfrom: translate(-50%, -50%) scale(0.5);
+    }
+}
+
