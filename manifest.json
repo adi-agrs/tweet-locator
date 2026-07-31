@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "Tweet Locator",
+    "version": "1.0",
+    "description": "Tracks tweets you have seen and lets you find them with AI using natural language prompts.",
+    "permissions": ["storage", "activeTab", "tabs"],
+    "content_scripts": [{
+        "matches": [
+            "*://*.twitter.com/*",
+            "*://*.x.com/*"],
+            "js": ["content.js"]
+        }
+    ],
+    "action": {},
+    "background": {"service_worker": "background.js"}
+}
