@@ -1,51 +1,51 @@
-const trailColor = "#1DA1F2";
-let lastX = 0;
-let lastY = 0;
+// const trailColor = "#1DA1F2";
+// let lastX = 0;
+// let lastY = 0;
 
-chrome.storage.local.get("tweets", function(result) {
-    console.log(result.tweets);
-});
+// chrome.storage.local.get("tweets", function(result) {
+//     console.log(result.tweets);
+// });
 
-document.addEventListener('mousemove', function(e){
-    lastX = e.clientX;
-    lastY = e.clientY;
-    const trail = document.createElement('div');
-    trail.className = 'trail';
+// document.addEventListener('mousemove', function(e){
+//     lastX = e.clientX;
+//     lastY = e.clientY;
+//     const trail = document.createElement('div');
+//     trail.className = 'trail';
 
-    const color = trailColor;
-    const spread = 10;
-    const offsetX = (Math.random() -0.5) * spread;
-    const offsetY = (Math.random() -0.5) * spread;
+//     const color = trailColor;
+//     const spread = 10;
+//     const offsetX = (Math.random() -0.5) * spread;
+//     const offsetY = (Math.random() -0.5) * spread;
 
-    trail.style.left = (e.clientX + offsetX) + 'px';
-    trail.style.top = (e.clientY + offsetY) + 'px';
+//     trail.style.left = (e.clientX + offsetX) + 'px';
+//     trail.style.top = (e.clientY + offsetY) + 'px';
 
-    document.body.appendChild(trail);
+//     document.body.appendChild(trail);
 
-    setTimeout(() => {
-        trail.remove();
-    }, 300)
+//     setTimeout(() => {
+//         trail.remove();
+//     }, 300)
 
-});
+// });
 
-// spawn dots at cursor even when not moving
-setInterval(function() {
-    const trail = document.createElement('div');
-    trail.className = 'trail';
+// // spawn dots at cursor even when not moving
+// setInterval(function() {
+//     const trail = document.createElement('div');
+//     trail.className = 'trail';
 
-    const spread = 20;
-    const offsetX = (Math.random() - 0.5) * spread;
-    const offsetY = (Math.random() - 0.5) * spread;
+//     const spread = 20;
+//     const offsetX = (Math.random() - 0.5) * spread;
+//     const offsetY = (Math.random() - 0.5) * spread;
 
-    trail.style.left = (lastX + offsetX) + 'px';
-    trail.style.top = (lastY + offsetY) + 'px';
+//     trail.style.left = (lastX + offsetX) + 'px';
+//     trail.style.top = (lastY + offsetY) + 'px';
 
-    document.body.appendChild(trail);
+//     document.body.appendChild(trail);
 
-    setTimeout(() => {
-        trail.remove();
-    }, 300);
-}, 300); // spawns a dot every 300ms regardless of movement
+//     setTimeout(() => {
+//         trail.remove();
+//     }, 300);
+// }, 300); // spawns a dot every 300ms regardless of movement
 
 chrome.storage.local.get("tweets", function(result) {
     console.log("saved tweets:", result.tweets);
@@ -54,8 +54,6 @@ chrome.storage.local.get("tweets", function(result) {
 chrome.storage.local.get("tweets", function(result) {
     const tweets = result.tweets || [];
     const tweetList = document.getElementById("tweet-list");
-    
-    tweetList.innerHTML = ""; // clear the placeholder "hiiiii" text
     
     tweets.forEach(function(tweet) {
         const div = document.createElement("div");
@@ -66,5 +64,12 @@ chrome.storage.local.get("tweets", function(result) {
             <a href="${tweet.url}" target="_blank">→ view tweet</a>
         `;
         tweetList.appendChild(div);
+    });
+});
+
+document.getElementById("top-btn").addEventListener("click", function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
     });
 });

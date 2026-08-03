@@ -51,10 +51,10 @@ input {
     border: none;
     outline: none;
     background: transparent;
-    font-size: 2.6rem;
+    font-size: 1.5rem;
     font-family: inherit;
     font-weight: bold;
-    width: 200px;
+    width: 800px;
     color: #fafafa;
     margin-left: 0px;
     margin-top: 1px;
@@ -65,7 +65,7 @@ input::placeholder {
     color: #fafafa;
     margin-left: 0px;
     margin-top: 3px;
-    font-size: 2.6rem;
+    font-size: 1.5rem;
     text-align: center;
 }
 
@@ -79,11 +79,23 @@ form {
     gap: 24px;
 }
 
+.search-container {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    margin-left: 100px;
+    margin-bottom: 30px;
+}
+
+.ai-search-btn {
+    margin-left: 10px
+}
+
 .form-row {
     display: flex;
     margin-top: 12px;
     margin-bottom: 12px;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     font-weight: bold;
     color: #fafafa;
     text-align: center;
@@ -91,25 +103,6 @@ form {
     align-items: center;
     justify-content: center;
     gap: 8px;
-}
-
-button {
-    font-size: 1.5rem;
-    padding: 3px 40px;
-    margin-bottom: 24px;
-    font-weight: bold;
-    font-family: 'OCR A Std', monospace;
-    background-color: #000000;
-    color: #fafafa;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.2s ease;
-}
-
-button:hover {
-    background-color: #e00061;
-    color: #fafafa;
-    border: none;
 }
 
 a {
@@ -123,26 +116,6 @@ a:hover {
     color: #e00b00;
 }
 
-.cursor {
-  pointer-events: none;
-  position: fixed;
-  display: block;
-  border-radius: 0;
-  mix-blend-mode: difference;
-  top: 0;
-  left: 0;
-  z-index: 9999999999999999;  
-}
-
-.circle {
-    position: absolute;
-    display: block;
-    width: 90px;
-    height: 90px;
-    border-radius: 65px;
-    background-color: #fafafa;
-}
-
 ::selection {
     background-color: #07be6c; /* the highlight color */
     color: #fafafa; /* the text color when highlighted */
@@ -150,32 +123,6 @@ a:hover {
 
 .tweet-list {
    text-align: center;
-}
-
-.trail{
-    position: fixed;
-    background-color: #1DA1F2;
-    width: 20px;
-    height: 20px;
-    border-radius: 0%;
-    pointer-events: none;
-    opacity: 1;
-    transform: translate(-50%, -50%);
-    animation: fadeOut 0.3s ease-out forwards;
-    z-index: 1;
-}
-
-@keyframes fadeOut {
-    from {
-        width: 20px;
-        height: 20px;
-    }
-
-    to{
-        width: 10px;
-        height: 10px;
-        transfrom: translate(-50%, -50%) scale(0.5);
-    }
 }
 
 .tweet-card {
@@ -194,4 +141,19 @@ a:hover {
 .tweet-text {
     color: #fafafa;
     margin-bottom: 8px;
+}
+
+.top-btn {
+    position: fixed;
+    bottom: 100px;
+    right: 100px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 100%;
+    font-family: sans-serif;
+    font-size: 12px;
+    height: 40px;
+    width: 40px;
+    z-index: 1000; /* Keeps button above other elements */
 }
