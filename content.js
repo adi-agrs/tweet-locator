@@ -12,28 +12,32 @@ function extractTweets(nodes) {
             const userEl = tweet.querySelector('[data-testid="User-Name"]');
 
             if (!textEl || !userEl) return; // skip if missing
-
             const text = textEl.innerText;
             const user = userEl.innerText;
 
+            // select every link with "/status/" in the href
             const links = tweet.querySelectorAll('a[href*="/status/"]');
-            let url = window.location.href; // fallback to current page
+            let url = null; // fallback to null if no status link found
 
+            // loop through all links in a tweet 
             for (const link of links){
                 const href = link.getAttribute('href');
-                if (/^\/\w+\/status\/d+$/.test(href)) {
-                    url = "https://twitter.com" + href;
-                    break;
+                if (/^\/\w+\/status\/\d+$/.test(href)) { // [start]/username/status/digits[end] 
+                    url = href; // store just the path, no domain prefix
+                    break; // when we find the first match we break the loop 
                 }
             }
-           
-            const id = user + text.slice(0, 20); // rough unique id
 
-            if (seenTweetIds.has(id)) return; // skip duplicates
+            // if we couldn't find a proper tweet URL, skip this tweet
+            if (!url) return;
+
+            // the id is the url of the tweet because the url is inherently unique 
+            const id = url;
+
+            if (seenTweetIds.has(id)) return; 
+
             seenTweetIds.add(id);
-
             const timestamp = Date.now();
-
             const tweetData = { text, user, url, timestamp };
 
             // save to chrome storage
