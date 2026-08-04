@@ -5,7 +5,6 @@ console.log("content script loaded");
 function extractTweets(nodes) {
     nodes.forEach(function(node) {
         if (node.nodeType !== 1) return; // skip non-elements
-
         const tweets = node.querySelectorAll('[data-testid="tweet"]');
 
         tweets.forEach(function(tweet) {
@@ -16,12 +15,24 @@ function extractTweets(nodes) {
 
             const text = textEl.innerText;
             const user = userEl.innerText;
-            const url = window.location.href;
-            const timestamp = Date.now();
+
+            const links = tweet.querySelectorAll('a[href*="/status/"]');
+            let url = window.location.href; // fallback to current page
+
+            for (const link of links){
+                const href = link.getAttribute('href');
+                if (/^\/\w+\/status\/d+$/.test(href)) {
+                    url = "https://twitter.com" + href;
+                    break;
+                }
+            }
+           
             const id = user + text.slice(0, 20); // rough unique id
 
             if (seenTweetIds.has(id)) return; // skip duplicates
             seenTweetIds.add(id);
+
+            const timestamp = Date.now();
 
             const tweetData = { text, user, url, timestamp };
 
