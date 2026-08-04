@@ -1,7 +1,5 @@
 const seenTweetIds = new Set();
 
-console.log("content script loaded");
-
 function extractTweets(nodes) {
     nodes.forEach(function(node) {
         if (node.nodeType !== 1) return; // skip non-elements
