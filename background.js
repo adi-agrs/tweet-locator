@@ -7,4 +7,8 @@ chrome.action.onClicked.addListener(function() {
     });
 });
 
-// DONE
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+    if (message.type === "new_tweet") {
+        // generate embedding for message.tweet
+    }
+});
