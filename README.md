@@ -1,4 +1,4 @@
-# RecallX
+# RecallX AI
 
 A Chrome extension that automatically tracks every tweet you scroll past on Twitter/X and lets you find them again using natural language search — because Twitter doesn't have a viewing history.
 
