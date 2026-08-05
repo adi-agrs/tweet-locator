@@ -28,6 +28,23 @@ chrome.storage.local.get("tweets", function(result) {
     renderTweets(allTweets);
 });
 
+
+// cosineSimilarity compares two vectors and returns a value between -1 and 1
+
+function cosineSimilarity(a, b) {
+    let dot = 0;
+    let magA = 0;
+    let magB = 0;
+
+    for (let i = 0; i < a.length; i++) {
+        dot += a[i] * b[i];
+        magA += a[i] * a[i];
+        magB += b[i] * b[i];
+    }
+
+    return dot / (Math.sqrt(magA) * Math.sqrt(magB));
+}
+
 // search button click
 document.getElementById("search-btn").addEventListener("click", function() {
     const mode = document.getElementById("search-mode").value;
@@ -47,8 +64,26 @@ document.getElementById("search-btn").addEventListener("click", function() {
     }
 
     if (mode === "semantic") {
-        // semantic search coming soon
-        alert("semantic search coming soon!");
+        // get the embedding for the query
+        const output = await embedder(query, {
+            pooling: "mean",
+            normalize: true
+        });
+
+        queryEmbedding = Array.from(output.data);
+        const filtered = allTweets
+        .map(tweet => ({
+            tweet,
+            similarity: cosineSimilarity(queryEmbedding, tweet.embedding)
+        }))
+
+        // descending order of similarity score
+        .sort((a,b) => b.similarity - a.similarity);
+        
+        // filter out tweets with less than a 0.4 similarity score
+        const threshold = 0.4;
+        const finalFiltered = filtered.filter(item => item.similarity >= threshold).map(item => item.tweet);
+        renderTweets(finalFiltered);
     }
 });
 

@@ -36,22 +36,27 @@ function extractTweets(nodes) {
 
             seenTweetIds.add(id);
             const timestamp = Date.now();
-            const tweetData = { text, user, url, timestamp };
+            const tweetData = { text, user, url, timestamp, embedding: null };
 
             // save to chrome storage
             chrome.storage.local.get("tweets", function(result) {
                 const tweets = result.tweets || [];
                 tweets.unshift(tweetData); // add to front
 
-                const timeLimit = Date.now() - (60 * 60 * 60 * 24 * 1000);
+                const timeLimit = Date.now() - (5184000000); //60 days in milliseconds
                 const filteredTweets = tweets.filter(function(tweet){
                     return tweet.timestamp > timeLimit;
                 });
 
                 // cap at last 10000 tweets
-
                 const cappedTweets = filteredTweets.slice(0, 10000);
                 chrome.storage.local.set({ tweets: cappedTweets });
+
+                // tell background.js to generate an embedding for this tweet
+                chrome.runtime.sendMessage({
+                    type: "new_tweet",
+                    tweet: tweetData
+                });
             });
         });
     });
