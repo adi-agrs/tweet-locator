@@ -1,9 +1,42 @@
-import { pipeline } from "@xenova/transformers";
+import { pipeline, env } from "./static/transformers.min.js";
 
-const embedder = await pipeline(
-    "feature-extraction",
-    "Xenova/all-MiniLM-L6-v2"
-);
+// tell transformers.js to fetch models from hugging face CDN
+// instead of looking for them locally
+env.allowLocalModels = false;
+env.useBrowserCache = true;
+
+// lazy embedder loading 
+let embedder = null;
+
+async function getEmbedder() {
+    if (!embedder) {
+        embedder = await pipeline("feature-extraction", "Xenova/all-MiniLM-L6-v2");
+    }
+    return embedder;
+}
+
+async function ensureEmbeddings() {
+    const embedder = await getEmbedder();
+    
+    // find tweets missing embeddings
+    const tweetsMissingEmbeddings = allTweets.filter(t => !t.embedding);
+    
+    if (tweetsMissingEmbeddings.length === 0) return;
+    
+    console.log(`generating embeddings for ${tweetsMissingEmbeddings.length} tweets...`);
+
+    for (const tweet of tweetsMissingEmbeddings) {
+        const output = await embedder(tweet.text, {
+            pooling: "mean",
+            normalize: true
+        });
+        tweet.embedding = Array.from(output.data);
+    }
+
+    // save updated tweets with embeddings back to storage
+    await chrome.storage.local.set({ tweets: allTweets });
+    console.log("embeddings done");
+}
 
 let allTweets = []; // store all tweets globally so search can filter them
 
@@ -70,14 +103,23 @@ document.getElementById("search-btn").addEventListener("click", async function()
     }
 
     if (mode === "semantic") {
+        document.getElementById("tweet-list").innerHTML = 
+        "<p style='text-align:center; color:#999;'>generating embeddings, please wait...</p>";
+        
+        // generate any missing embeddings first
+        await ensureEmbeddings();
+
         // get the embedding for the query
+        embedder = await getEmbedder();
         const output = await embedder(query, {
             pooling: "mean",
             normalize: true
         });
 
         const queryEmbedding = Array.from(output.data);
-        const filtered = allTweets
+        // filter out tweets with no embedding (shouldn't happen but just in case)
+        const tweetsWithEmbeddings = allTweets.filter(t => t.embedding);
+        const filtered = tweetsWithEmbeddings
         .map(tweet => ({
             tweet,
             similarity: cosineSimilarity(queryEmbedding, tweet.embedding)

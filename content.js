@@ -51,12 +51,6 @@ function extractTweets(nodes) {
                 // cap at last 10000 tweets
                 const cappedTweets = filteredTweets.slice(0, 10000);
                 chrome.storage.local.set({ tweets: cappedTweets });
-
-                // tell background.js to generate an embedding for this tweet
-                chrome.runtime.sendMessage({
-                    type: "new_tweet",
-                    tweet: tweetData
-                });
             });
         });
     });
