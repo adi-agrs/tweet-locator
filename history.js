@@ -1,3 +1,10 @@
+import { pipeline } from "@xenova/transformers";
+
+const embedder = await pipeline(
+    "feature-extraction",
+    "Xenova/all-MiniLM-L6-v2"
+);
+
 let allTweets = []; // store all tweets globally so search can filter them
 
 function renderTweets(tweets) {
@@ -28,7 +35,6 @@ chrome.storage.local.get("tweets", function(result) {
     renderTweets(allTweets);
 });
 
-
 // cosineSimilarity compares two vectors and returns a value between -1 and 1
 
 function cosineSimilarity(a, b) {
@@ -46,7 +52,7 @@ function cosineSimilarity(a, b) {
 }
 
 // search button click
-document.getElementById("search-btn").addEventListener("click", function() {
+document.getElementById("search-btn").addEventListener("click", async function() {
     const mode = document.getElementById("search-mode").value;
     const query = document.getElementById("search-bar").value.trim().toLowerCase();
 
@@ -70,7 +76,7 @@ document.getElementById("search-btn").addEventListener("click", function() {
             normalize: true
         });
 
-        queryEmbedding = Array.from(output.data);
+        const queryEmbedding = Array.from(output.data);
         const filtered = allTweets
         .map(tweet => ({
             tweet,
