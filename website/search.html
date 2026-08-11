@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RecallX AI</title>
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body id ="top">
+    <div id="app" style="position: relative; z-index: 2;">
+        <header>
+            <h1>RecallX AI</h1>
+        </header>
+        <button id="download-btn"> Download History</button>
+        <div class="search-container">
+            <select id="search-mode">
+                <option value="direct">Direct Search</option>
+                <option value="semantic">Semantic Search</option>
+            </select>
+            <input type="text" id="search-bar" placeholder="Search your history...">
+            <button id="search-btn">Search</button>
+        </div>
+        <div id="tweet-list">
+        </div>
+        <button class="top-btn" id="top-btn" style="display: flex;">TOP</button>
+
+    </div>
+    <script src="history.js"></script>
+</body>
+</html>
