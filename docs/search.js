@@ -94,7 +94,7 @@ document.getElementById("search-btn").addEventListener("click", async function()
         .filter(t => t.embedding)
         .map(tweet => ({ tweet, similarity: cosineSimilarity(queryEmbedding, tweet.embedding) }))
         .sort((a, b) => b.similarity - a.similarity)
-        .filter(item => item.similarity >= 0.3)
+        .filter(item => item.similarity >= 0.1)
         .map(item => item.tweet);
 
     setStatus(`found ${results.length} results.`);
