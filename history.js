@@ -77,7 +77,6 @@ chrome.storage.local.get("tweets", function(result) {
 
 // search button click
 document.getElementById("search-btn").addEventListener("click", async function() {
-    const mode = document.getElementById("search-mode").value;
     const query = document.getElementById("search-bar").value.trim().toLowerCase();
 
     if (!query) {
@@ -85,20 +84,12 @@ document.getElementById("search-btn").addEventListener("click", async function()
         return;
     }
 
-    if (mode === "direct") {
-        const filtered = allTweets.filter(function(tweet) {
-            return tweet.text.toLowerCase().includes(query) ||
-                   tweet.user.toLowerCase().includes(query);
-        });
-        renderTweets(filtered);
-    }
-
-    if (mode === "semantic") {
-        // semantic search moved to companion website
-        // direct user there instead
-        document.getElementById("tweet-list").innerHTML = 
-            "<p style='text-align:center; color:#999;'>semantic search is available at the RecallX website — export your history and upload it there.</p>";
-    }
+    const filtered = allTweets.filter(function(tweet) {
+        return tweet.text.toLowerCase().includes(query) ||
+                tweet.user.toLowerCase().includes(query);
+    });
+    renderTweets(filtered);
+    
 });
 
 // also search on Enter key
