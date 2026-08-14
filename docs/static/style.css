@@ -1,0 +1,233 @@
+:root {
+  --main-color: #c90054;
+  --padding-base: 16px;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    font-family: 'Gill Sans', monospace;
+    color: white;
+    margin: 60px auto;
+    padding: 0 24px;
+    max-width: 2200px;
+    background-color: #000000;
+    background-size: 24px 24px;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+h1 {
+    text-align: center;
+    font-size: 4.8rem;
+    font-weight: bold;
+    margin-top: 100px;
+    margin-bottom: 8px;
+}
+
+h2 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #fafafa;
+    text-align: center;
+    margin-top: 24px;
+    margin-bottom: 48px;
+}
+
+h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #fafafa;
+    margin-bottom: 16px;
+}
+
+input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1.5rem;
+    font-family: inherit;
+    font-weight: bold;
+    width: 800px;
+    color: #fafafa;
+    margin-left: 0px;
+    margin-top: 1px;
+    text-align: center;
+}
+
+input::placeholder {
+    color: #fafafa;
+    margin-left: 0px;
+    margin-top: 3px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+form {
+    align-items: right;
+    justify-content: right;
+    color: #fafafa;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+}
+
+.search-container {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 30px;
+    border: 1px solid white;
+}
+
+.form-row {
+    display: flex;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fafafa;
+    text-align: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--main-color);
+}
+
+a:hover {
+    cursor: pointer;
+    color: #00a4e0;
+}
+
+::selection {
+    background-color: var(--main-color); /* the highlight color */
+    color: #fafafa; /* the text color when highlighted */
+}
+
+.tweet-list {
+   text-align: center;
+}
+
+.tweet-card {
+    border: 1px solid white;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+}
+
+.tweet-user {
+    color: var(--main-color);
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.tweet-text {
+    color: #fafafa;
+    margin-bottom: 8px;
+}
+
+.top-btn {
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center; /* Horizontally centers text */
+    align-items: center;     /* Vertically centers text */
+    position: fixed;
+    bottom: 60px;
+    right: 70px;
+    background-color: var(--main-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 100%;
+    font-family: monospace;
+    font-size: 2.5rem;
+    font-weight: bold;
+    height: 65px;
+    width: 65px;
+    z-index: 1000; /* Keeps button above other elements */
+}
+
+.download-btn {
+    background-color: white;
+    color: black;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    width: 100px;
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 1.25rem;
+    font-weight: bold;
+    display: inline-flex;
+    justify-content: center; 
+    align-items: center;
+    top: 0px;
+    left: 2px;    
+}
+
+.search-btn {
+    background-color: white;
+    color: black;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    width: 100px;
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 1.25rem;
+    font-weight: bold;
+    display: inline-flex;
+    justify-content: center; 
+    align-items: center;
+    top: 0px;
+    left: 2px;    
+}
+
+.x-icon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.search-container {
+    display: flex;
+    width: min(100%, 1000px);
+    margin: 12px auto 30px;
+    border: 1px solid white;
+    gap: 0;
+}
+
+.search-container input {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+}
+
+.download-btn,
+.search-btn {
+    flex: 0 0 100px;
+}
