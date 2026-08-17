@@ -7,7 +7,7 @@
 <body>
     <header>
       <div id="header-line" class="header-line">
-        <h1>Recall<img src="/static/images/X_icon.svg" class="x-icon" id="x-icon"> AI</h1>
+        <h1>Recall<img src="static/images/X_icon.svg" class="x-icon" id="x-icon"> AI</h1>
       </div>
     </header>
     <p class="subtitle">semantic search for your Twitter history</p>
@@ -15,6 +15,11 @@
     <div class="upload-area" id="upload-area">
         <p>click to upload your tweet_history.json</p>
         <input type="file" id="file-input" accept=".json">
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="search-bar" placeholder="describe the tweet you're looking for...">
+        <button id="search-btn">Search</button>
     </div>
 
     <div id="status"></div>
