@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang ="en">
 <head>
+    <meta charset="utf-8">
     <title>RecallX — AI Search</title>
     <link rel="stylesheet" href="static/style.css">
 </head>
@@ -14,7 +15,6 @@
 
 <!-- Upload View -->
     <div id="upload-section">
-        <p class="subtitle">semantic search for your Twitter history</p>
         <div class="upload-area" id="upload-area">
             <p>click to upload your tweet_history.json</p>
             <input type="file" id="file-input" accept=".json">
@@ -23,10 +23,12 @@
 
     <div id="search-section" class="hidden">
         <div class="search-container">
-            <input type="text" id="search-bar" placeholder="describe the tweet you're looking for...">
-            <button id="search-btn">Search</button>
+            <button id="download-btn" class="download-btn">.json</button>
+            <input type="text" id="search-bar" placeholder="search your history...">
+            <button id="search-btn" class="search-btn">search</button>
         </div>
     </div>
+    <button class="top-btn" id="top-btn" style="display: flex;">↑</button>
 
     <div id="status"></div>
     <div id="tweet-list"></div>

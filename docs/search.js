@@ -21,7 +21,7 @@ function setStatus(msg) {
 
 function renderTweets(tweets) {
     const tweetList = document.getElementById("tweet-list");
-    tweetList.innerHTML = "";
+    tweetList.innerHTML = ""; // clear current list
 
     if (tweets.length === 0) {
         tweetList.innerHTML = "<p style='text-align:center; color:#999;'>no tweets found</p>";
@@ -39,6 +39,13 @@ function renderTweets(tweets) {
         tweetList.appendChild(div);
     });
 }
+
+document.getElementById("top-btn").addEventListener("click", function() {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
 
 function cosineSimilarity(a, b) {
     let dot = 0, magA = 0, magB = 0;
@@ -109,4 +116,20 @@ document.getElementById("search-btn").addEventListener("click", async function()
 
 document.getElementById("search-bar").addEventListener("keydown", function(e) {
     if (e.key === "Enter") document.getElementById("search-btn").click();
+});
+
+// download button click 
+document.getElementById("download-btn").addEventListener("click", function() {
+    chrome.storage.local.get("tweets", function(result) {
+        const tweets = result.tweets || [];
+        const jsonString = JSON.stringify(tweets, null, 2);
+        const blob = new Blob([jsonString], { type: "application/json" });
+        const blob_url = URL.createObjectURL(blob);
+
+        const link = document.createElement("a");
+        link.href = blob_url;
+        link.download = "tweet_history.json";
+        link.click();
+        URL.revokeObjectURL(blob_url);
+    });
 });

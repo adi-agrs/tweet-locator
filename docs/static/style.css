@@ -111,79 +111,152 @@ h1 {
 
 .search-container {
     display: flex;
-
-    width: min(100%, 1000px);
-
-    margin: 12px auto 30px;
-
+    gap: 8px;
+    margin-top: 12px;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 30px;
     border: 1px solid white;
+}
 
+
+
+.form-row {
+    display: flex;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fafafa;
+    text-align: center;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: var(--main-color);
+}
+
+a:hover {
+    cursor: pointer;
+    color: #00a4e0;
+}
+
+::selection {
+    background-color: var(--main-color); /* the highlight color */
+    color: #fafafa; /* the text color when highlighted */
+}
+
+.tweet-list {
+   text-align: center;
+}
+
+.tweet-card {
+    border: 1px solid white;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+}
+
+.tweet-user {
+    color: var(--main-color);
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.tweet-text {
+    color: #fafafa;
+    margin-bottom: 8px;
+}
+
+.top-btn {
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center; /* Horizontally centers text */
+    align-items: center;     /* Vertically centers text */
+    position: fixed;
+    bottom: 60px;
+    right: 70px;
+    background-color: var(--main-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 100%;
+    font-family: monospace;
+    font-size: 2.5rem;
+    font-weight: bold;
+    height: 65px;
+    width: 65px;
+    z-index: 1000; /* Keeps button above other elements */
+}
+
+.download-btn {
+    background-color: white;
+    color: black;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    width: 100px;
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 1.25rem;
+    font-weight: bold;
+    display: inline-flex;
+    justify-content: center; 
+    align-items: center;
+    top: 0px;
+    left: 2px;    
+}
+
+.search-btn {
+    background-color: white;
+    color: black;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    width: 100px;
+    text-decoration: none;
+    font-family: monospace;
+    font-size: 1.25rem;
+    font-weight: bold;
+    display: inline-flex;
+    justify-content: center; 
+    align-items: center;
+    top: 0px;
+    left: 2px;    
+}
+
+.x-icon {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.search-container {
+    display: flex;
+    width: min(100%, 1000px);
+    margin: 12px auto 30px;
+    border: 1px solid white;
     gap: 0;
 }
 
-
-/* Search input */
-
 .search-container input {
     flex: 1;
-
     min-width: 0;
     width: auto;
-
-    border: none;
-    outline: none;
-
-    background: transparent;
-
-    color: var(--text-color);
-
-    font-family: inherit;
-    font-size: 1.5rem;
-    font-weight: bold;
-
-    padding: 12px 16px;
-
-    text-align: center;
 }
 
-.search-container input::placeholder {
-    color: var(--text-color);
-
-    font-family: inherit;
-    font-size: 1.5rem;
-
-    text-align: center;
-}
-
-
-/* Search button */
-
-#search-btn {
+.download-btn,
+.search-btn {
     flex: 0 0 100px;
-
-    height: 100%;
-
-    border: none;
-
-    background-color: white;
-    color: black;
-
-    font-family: monospace;
-    font-size: 1.1rem;
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition:
-        background-color 0.2s ease,
-        color 0.2s ease;
 }
-
-#search-btn:hover {
-    background-color: var(--main-color);
-    color: white;
-}
-
 
 /* =========================
    STATUS
@@ -198,76 +271,6 @@ h1 {
 
     font-size: 1rem;
     color: var(--text-color);
-}
-
-
-/* =========================
-   TWEET LIST
-   ========================= */
-
-#tweet-list {
-    width: min(100%, 1000px);
-
-    margin: 0 auto;
-
-    text-align: left;
-}
-
-
-/* Individual tweet */
-
-.tweet-card {
-    border: 1px solid white;
-
-    padding: 16px;
-    margin-bottom: 16px;
-
-    border-radius: 4px;
-
-    transition:
-        border-color 0.2s ease,
-        transform 0.2s ease;
-}
-
-.tweet-card:hover {
-    border-color: var(--main-color);
-    transform: translateY(-2px);
-}
-
-
-/* Username */
-
-.tweet-user {
-    color: var(--main-color);
-
-    font-weight: bold;
-
-    margin-bottom: 8px;
-}
-
-
-/* Tweet text */
-
-.tweet-text {
-    color: var(--text-color);
-
-    margin-bottom: 8px;
-
-    line-height: 1.5;
-}
-
-
-/* Links */
-
-a {
-    text-decoration: none;
-    cursor: pointer;
-
-    color: var(--main-color);
-}
-
-a:hover {
-    color: var(--hover-color);
 }
 
 
