@@ -3,7 +3,9 @@
     "name": "RecallX AI",
     "version": "1.0",
     "icons": {
-        "128": "static/images/logo.svg"
+        "128": "static/images/logo.svg",
+        "48": "static/images/logo.svg",
+        "16": "static/images/logo.svg"
     },
 
     "action": {

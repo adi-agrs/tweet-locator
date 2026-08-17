@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>RecallX AI — Privacy Policy</title>
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="icon" type="image/svg+xml" href="static/images/logo.svg">
+    <style>
+        .policy {
+            max-width: 800px;
+            margin: 0 auto 80px;
+            line-height: 1.7;
+            color: var(--text-color);
+        }
+
+        .policy h2 {
+            color: var(--main-color);
+            font-size: 1.5rem;
+            margin-top: 40px;
+            margin-bottom: 12px;
+        }
+
+        .policy p, .policy li {
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        .policy ul {
+            margin-left: 24px;
+            margin-bottom: 12px;
+        }
+
+        .policy .updated {
+            text-align: center;
+            color: var(--text-color);
+            opacity: 0.7;
+            margin-bottom: 40px;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div id="header-line" class="header-line">
+            <h1>Recall<img src="static/images/X_icon.svg" class="x-icon" id="x-icon"> AI</h1>
+        </div>
+    </header>
+    <p class="subtitle">privacy policy</p>
+
+    <a href="index.html" class="back-link">&larr; back to search</a>
+
+    <div class="policy">
+        <p class="updated">Last updated: August 17, 2026</p>
+
+        <p>RecallX AI ("the extension") is designed to be fully private by default. This policy explains exactly what data the extension interacts with and how it's handled.</p>
+
+        <h2>What data is collected</h2>
+        <p>While you browse Twitter/X, the extension automatically captures the following for tweets that appear on your screen:</p>
+        <ul>
+            <li>Tweet text</li>
+            <li>Author name</li>
+            <li>Tweet permalink (URL)</li>
+            <li>Timestamp of when it was captured</li>
+        </ul>
+
+        <h2>Where this data is stored</h2>
+        <p>All captured data is stored locally on your device, using Chrome's built-in <code>chrome.storage.local</code> API. RecallX AI does not operate any server, does not have a backend, and does not transmit any of your data over the network at any point.</p>
+
+        <h2>Data sharing</h2>
+        <p>RecallX AI does not share, sell, or transmit your data to any third party. There are no analytics, trackers, or ad SDKs included in the extension.</p>
+
+        <h2>Data retention</h2>
+        <p>Captured tweets are automatically deleted after 60 days, and history is capped at 10,000 tweets, whichever limit is reached first. You can also export your full history as a JSON file or clear it at any time by removing the extension.</p>
+
+        <h2>Optional AI semantic search</h2>
+        <p>RecallX AI includes this optional companion website for semantic (meaning-based) search. If you choose to use it, you manually export your history as a JSON file from the extension and upload it here yourself. All processing — including running the embedding model — happens locally in your browser using Transformers.js. The uploaded file is never sent to a server; it exists only in your browser's memory for that session.</p>
+
+        <h2>Permissions justification</h2>
+        <ul>
+            <li><strong>storage</strong> — required to save your tweet history locally on your device.</li>
+            <li><strong>activeTab / tabs</strong> — required to open the history page when you click the extension icon.</li>
+            <li><strong>host permissions (x.com, twitter.com)</strong> — required so the content script can detect and read tweets as you scroll, which is the extension's core function.</li>
+        </ul>
+
+        <h2>Changes to this policy</h2>
+        <p>If this policy changes, the "Last updated" date above will be revised accordingly.</p>
+
+        <h2>Contact</h2>
+        <p>For questions about this policy, please open an issue on the project's <a href="https://github.com/adi-agrs/tweet-locator" target="_blank">GitHub repository</a>.</p>
+    </div>
+</body>
+</html>
