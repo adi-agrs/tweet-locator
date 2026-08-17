@@ -7,7 +7,6 @@
     --padding-base: 16px;
 }
 
-
 /* =========================
    GLOBAL
    ========================= */
@@ -233,12 +232,6 @@ a:hover {
     left: 2px;    
 }
 
-.x-icon {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-}
-
 .search-container {
     display: flex;
     width: min(100%, 1000px);
@@ -271,58 +264,6 @@ a:hover {
 
     font-size: 1rem;
     color: var(--text-color);
-}
-
-
-/* =========================
-   MOBILE
-   ========================= */
-
-@media (max-width: 600px) {
-
-    body {
-        padding: 30px 12px;
-    }
-
-    h1 {
-        font-size: 3.2rem;
-        margin-top: 20px;
-    }
-
-    .subtitle {
-        font-size: 1rem;
-        margin-bottom: 32px;
-    }
-
-    .upload-area {
-        padding: 30px 16px;
-    }
-
-    .upload-area p {
-        font-size: 1rem;
-    }
-
-    .search-container {
-        width: 100%;
-    }
-
-    .search-container input {
-        font-size: 1rem;
-        padding: 10px;
-    }
-
-    .search-container input::placeholder {
-        font-size: 1rem;
-    }
-
-    #search-btn {
-        flex: 0 0 75px;
-        font-size: 0.9rem;
-    }
-
-    #tweet-list {
-        width: 100%;
-    }
 }
 
 .hidden {
