@@ -296,13 +296,3 @@ a:hover {
 .hidden {
     display: none !important;
 }
-
-.extension-link {
-    text-align: center;
-    transform: rotate(-25deg);
-    position: absolute;
-    top: 20%;
-    left: 5%;
-    transform-origin: center;
-    font-size: 1.3rem;
-}
