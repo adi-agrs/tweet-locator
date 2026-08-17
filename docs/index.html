@@ -12,14 +12,20 @@
     </header>
     <p class="subtitle">semantic search for your Twitter history</p>
 
-    <div class="upload-area" id="upload-area">
-        <p>click to upload your tweet_history.json</p>
-        <input type="file" id="file-input" accept=".json">
+<!-- Upload View -->
+    <div id="upload-section">
+        <p class="subtitle">semantic search for your Twitter history</p>
+        <div class="upload-area" id="upload-area">
+            <p>click to upload your tweet_history.json</p>
+            <input type="file" id="file-input" accept=".json">
+        </div>
     </div>
 
-    <div class="search-container">
-        <input type="text" id="search-bar" placeholder="describe the tweet you're looking for...">
-        <button id="search-btn">Search</button>
+    <div id="search-section" class="hidden">
+        <div class="search-container">
+            <input type="text" id="search-bar" placeholder="describe the tweet you're looking for...">
+            <button id="search-btn">Search</button>
+        </div>
     </div>
 
     <div id="status"></div>

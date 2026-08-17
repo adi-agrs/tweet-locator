@@ -63,6 +63,12 @@ document.getElementById("file-input").addEventListener("change", function(e) {
     reader.onload = function(event) {
         allTweets = JSON.parse(event.target.result);
         setStatus(`loaded ${allTweets.length} tweets. ready to search.`);
+
+        // show the search bar 
+        // hide the upload section
+        document.getElementById("upload-section").classList.add("hidden");
+        document.getElementById("search-section").classList.remove("hidden");
+
         renderTweets(allTweets);
     };
     reader.readAsText(file);
