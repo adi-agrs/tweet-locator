@@ -23,16 +23,12 @@ html {
 
 body {
     font-family: 'Gill Sans', monospace;
-    color: var(--text-color);
-    background-color: var(--background-color);
-
-    width: 100%;
+    color: white;
+    margin: 60px auto;
+    padding: 0 24px;
     max-width: 2200px;
-
-    margin: 0 auto;
-    padding: 60px 24px;
-
-    min-height: 100vh;
+    background-color: #000000;
+    background-size: 24px 24px;
 }
 
 body::-webkit-scrollbar {
@@ -44,6 +40,37 @@ body::-webkit-scrollbar {
     color: var(--text-color);
 }
 
+input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1.5rem;
+    font-family: inherit;
+    font-weight: bold;
+    width: 800px;
+    color: #fafafa;
+    margin-left: 0px;
+    margin-top: 1px;
+    text-align: center;
+}
+
+input::placeholder {
+    color: #fafafa;
+    margin-left: 0px;
+    margin-top: 3px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+form {
+    align-items: right;
+    justify-content: right;
+    color: #fafafa;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 24px;
+}
 
 /* =========================
    HEADER
